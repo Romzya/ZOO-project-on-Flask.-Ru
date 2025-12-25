@@ -1,4 +1,4 @@
-#Zoo Management System - Flask Web Application#
+##Zoo Management System - Flask Web Application##
 
 Веб-приложение для управления зоопарком с разделением ролей пользователей на обычных посетителей и администраторов.
 
