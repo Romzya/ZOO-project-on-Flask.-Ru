@@ -1,0 +1,31 @@
+html
+{% extends "base.html" %}
+
+{% block title %}Мероприятия - Зоопарк "Дикий мир"{% endblock %}
+
+{% block content %}
+<h1>Мероприятия в зоопарке</h1>
+
+<div class="event-list">
+    {% for event in events %}
+    <div class="event-item">
+        <div class="event-date">
+            <span class="day">{{ event.date.split('-')[2] }}</span>
+            <span class="month">{{ event.date.split('-')[1] }}</span>
+        </div>
+        <div class="event-details">
+            <h3>{{ event.title }}</h3>
+            <p><strong>Время:</strong> {{ event.time }}</p>
+            <p>{{ event.description }}</p>
+            <p class="event-meta">Добавлено: {{ event.created_at[:10] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not events %}
+<div class="empty-state">
+    <p>Предстоящие мероприятия отсутствуют</p>
+</div>
+{% endif %}
+{% endblock %}

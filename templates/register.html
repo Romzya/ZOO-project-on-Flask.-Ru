@@ -1,0 +1,41 @@
+html
+{% extends "base.html" %}
+
+{% block title %}Регистрация - Зоопарк "Дикий мир"{% endblock %}
+
+{% block content %}
+<div class="auth-form">
+    <h1>Регистрация</h1>
+    
+    <form method="POST" action="{{ url_for('register') }}">
+        <div class="form-group">
+            <label for="username">Имя пользователя*:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Пароль*:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email (необязательно):</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        {% if not session.get('user_id') %}
+        <div class="form-group checkbox">
+            <input type="checkbox" id="is_admin" name="is_admin">
+            <label for="is_admin">Зарегистрироваться как администратор</label>
+            <p class="hint">Примечание: администраторы имеют доступ к панели управления для добавления животных и мероприятий</p>
+        </div>
+        {% endif %}
+        
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+    
+    <p class="auth-link">
+        Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a>
+    </p>
+</div>
+{% endblock %}

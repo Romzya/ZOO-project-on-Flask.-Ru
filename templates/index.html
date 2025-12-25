@@ -1,0 +1,49 @@
+html
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Добро пожаловать в Зоопарк "Дикий мир"</h1>
+    <p>Откройте для себя удивительный мир животных</p>
+</div>
+
+<div class="featured">
+    <h2>Наши новые обитатели</h2>
+    <div class="animal-grid">
+        {% for animal in animals %}
+        <div class="animal-card">
+            {% if animal.image_url %}
+            <img src="{{ animal.image_url }}" alt="{{ animal.name }}">
+            {% else %}
+            <div class="no-image">Фото отсутствует</div>
+            {% endif %}
+            <h3>{{ animal.name }}</h3>
+            <p><strong>Вид:</strong> {{ animal.species }}</p>
+            {% if animal.age %}
+            <p><strong>Возраст:</strong> {{ animal.age }} лет</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="featured">
+    <h2>Ближайшие мероприятия</h2>
+    <div class="event-grid">
+        {% for event in events %}
+        <div class="event-card">
+            <h3>{{ event.title }}</h3>
+            <p><strong>Дата:</strong> {{ event.date }}</p>
+            <p><strong>Время:</strong> {{ event.time }}</p>
+            <p>{{ event.description[:100] }}{% if event.description|length > 100 %}...{% endif %}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="info-box">
+    <h2>О нашем зоопарке</h2>
+    <p>Мы - современный зоопарк, который заботится о благополучии животных и предоставляет образовательные программы для посетителей всех возрастов.</p>
+    <p><strong>Часы работы:</strong> Ежедневно с 9:00 до 18:00</p>
+    <p><strong>Адрес:</strong> ул. Лесная, д. 1, г. Природный</p>
+</div>
+{% endblock %}

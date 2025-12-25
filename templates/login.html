@@ -1,0 +1,31 @@
+html
+{% extends "base.html" %}
+
+{% block title %}Вход - Зоопарк "Дикий мир"{% endblock %}
+
+{% block content %}
+<div class="auth-form">
+    <h1>Вход в систему</h1>
+    
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+<p class="auth-link">
+        Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрироваться</a>
+    </p>
+    
+    <div class="admin-note">
+        <p><strong>Для администраторов:</strong> используйте учетную запись администратора для доступа к панели управления</p>
+    </div>
+</div>
+{% endblock %}

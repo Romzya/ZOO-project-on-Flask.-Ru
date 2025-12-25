@@ -1,0 +1,42 @@
+html
+{% extends "base.html" %}
+
+{% block title %}Животные - Зоопарк "Дикий мир"{% endblock %}
+
+{% block content %}
+<h1>Наши животные</h1>
+
+<div class="search-box">
+    <form method="GET" action="{{ url_for('animals') }}">
+        <input type="text" name="search" placeholder="Поиск животных..." value="{{ request.args.get('search', '') }}">
+        <button type="submit">Найти</button>
+    </form>
+</div>
+
+<div class="animal-grid full-grid">
+    {% for animal in animals %}
+    <div class="animal-card detailed">
+        {% if animal.image_url %}
+        <img src="{{ animal.image_url }}" alt="{{ animal.name }}">
+        {% else %}
+        <div class="no-image">Фото отсутствует</div>
+        {% endif %}
+        <div class="animal-info">
+            <h3>{{ animal.name }}</h3>
+            <p><strong>Вид:</strong> {{ animal.species }}</p>
+            {% if animal.age %}
+            <p><strong>Возраст:</strong> {{ animal.age }} лет</p>
+            {% endif %}
+            <p><strong>Описание:</strong> {{ animal.description }}</p>
+            <p class="added-date">Добавлено: {{ animal.created_at[:10] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not animals %}
+<div class="empty-state">
+    <p>Животные не найдены</p>
+</div>
+{% endif %}
+{% endblock %}

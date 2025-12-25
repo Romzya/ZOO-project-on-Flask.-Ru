@@ -1,0 +1,42 @@
+html
+{% extends "base.html" %}
+
+{% block title %}Добавить животное - Админ-панель{% endblock %}
+
+{% block content %}
+<div class="admin-form">
+    <h1>Добавить новое животное</h1>
+    
+    <form method="POST" action="{{ url_for('add_animal') }}">
+        <div class="form-group">
+            <label for="name">Имя животного*:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="species">Вид*:</label>
+            <input type="text" id="species" name="species" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="age">Возраст (лет):</label>
+            <input type="number" id="age" name="age" min="0" max="100">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Описание*:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="image_url">Ссылка на изображение:</label>
+            <input type="url" id="image_url" name="image_url" placeholder="https://example.com/image.jpg">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Добавить животное</button>
+            <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
