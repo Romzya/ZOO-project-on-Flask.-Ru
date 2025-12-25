@@ -27,7 +27,7 @@
 · Шаблонизация: Jinja2
 
 ## 📁 Структура проекта
-
+```
 zoo_project/
 ├── app.py              
 ├── database.py         
@@ -44,31 +44,32 @@ zoo_project/
 │   └── add_event.html
 └── static/
     └── style.css      
-    
+```
 ## ⚙️ Установка и запуск
 
 ### 1. Клонирование репозитория
 
-Bash
+```Bash
 
 git clone <repository-url>
 cd zoo_project
 1. Создание виртуального окружения
-
-Bash
+```
+```Bash
 
 python -m venv venv
 source venv/bin/activate  # На Windows: venv\Scripts\activate
 1. Установка зависимостей
-
-Bash
+```
+```Bash
 
 pip install -r requirements.txt
 1. Запуск приложения
-
-Bash
+```
+```Bash
 
 python app.py
+```
 ### 1. Открыть в браузере
 
 http://127.0.0.1:5522
